@@ -19,7 +19,7 @@ namespace DrawSomething
             _ipAddress = ip;
             _port = port;
             _client = new TcpClient();
-            _buffer = new byte[4096];
+            _buffer = new byte[4096*16];
             _client.BeginConnect(_ipAddress, _port, DoBeginConnect, _client);
         }
 

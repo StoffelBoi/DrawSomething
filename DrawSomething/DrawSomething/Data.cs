@@ -49,7 +49,7 @@ namespace DrawSomething
             {
                 using (var ms = new MemoryStream())
                 {
-                    Image1.Save(ms, ImageFormat.Bmp);
+                    Image1.Save(ms, ImageFormat.Gif);
                     msg.AddRange(BitConverter.GetBytes(ms.Length));
                     msg.AddRange(ms.ToArray());
                 }
@@ -70,11 +70,9 @@ namespace DrawSomething
             if (MessageType.Equals(Type.Image))
             {
                 var imageData = bR.ReadBytes(length);
-                using (var ms = new MemoryStream(imageData))
-                {
-                    Image1 = Image.FromStream(ms);
-                    
-                }
+                bR.Close();
+                var ms = new MemoryStream(imageData);
+                Image1 = Image.FromStream(ms);
             }
             else
             {

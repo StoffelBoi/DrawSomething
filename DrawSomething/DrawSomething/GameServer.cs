@@ -21,7 +21,7 @@ namespace DrawSomething
         {
             _ipAddress = ip;
             _port = port;
-            _buffer = new byte[4096];
+            _buffer = new byte[4096*16];
             _tcpListener = new TcpListener(_ipAddress, _port);
             _tcpListener.Start();
             _tcpListener.BeginAcceptTcpClient(DoAcceptTcpClientCallback, _tcpListener);
